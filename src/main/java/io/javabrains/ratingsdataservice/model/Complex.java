@@ -1,5 +1,7 @@
 package io.javabrains.ratingsdataservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.HashSet;
@@ -18,6 +20,8 @@ public class Complex {
 
     private BigInteger price;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy = "complexId",fetch = FetchType.EAGER)
     private Set<Customer> customers = new HashSet<>();
 
