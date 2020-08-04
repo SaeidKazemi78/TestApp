@@ -26,6 +26,9 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
     List<CustomDto> getByQuery();
 
 
+    //Here is develop change
+
+
     //Here is develop
 
 //    @Query("select  cus from Customer  cus where cus.carType=:carType")
