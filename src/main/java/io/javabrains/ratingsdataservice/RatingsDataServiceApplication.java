@@ -1,9 +1,7 @@
 package io.javabrains.ratingsdataservice;
 
-<<<<<<< HEAD
 import io.javabrains.ratingsdataservice.enums.CarType;
-=======
->>>>>>> 6c9f13455c7294105efe0ebb677cc0d710da047e
+
 import io.javabrains.ratingsdataservice.model.Address;
 import io.javabrains.ratingsdataservice.model.Complex;
 import io.javabrains.ratingsdataservice.model.Customer;
@@ -91,18 +89,15 @@ public class RatingsDataServiceApplication implements CommandLineRunner {
 			complex.setTitle(" Title "+ i);
 			customer.setName( "Name " +i);
 			customer.setZipCode(" Zip " + i);
-<<<<<<< HEAD
 			customer.setCarType(CarType.PERSONAL);
 			address.setAlley( " Alley " +i);
 			address.setCity(" CITY " +i);
 			if(i/2==0){
 				customer.setComplexId(complex);
 			}
-=======
 			address.setAlley( " Alley " +i);
 			address.setCity(" CITY " +i);
 			customer.setComplexId(complex);
->>>>>>> 6c9f13455c7294105efe0ebb677cc0d710da047e
 			customer.setAddress(address);
 			customerRepository.save(customer);
 			LOGGER.info( " Saved success !");
