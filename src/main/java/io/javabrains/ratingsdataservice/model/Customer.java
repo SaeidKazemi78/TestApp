@@ -13,7 +13,10 @@ public class Customer {
     private Long id;
     private String name;
     private String zipCode;
+<<<<<<< HEAD
     @Enumerated(EnumType.STRING)
+=======
+>>>>>>> 6c9f13455c7294105efe0ebb677cc0d710da047e
     private CarType carType;
     private  boolean activated;
 
@@ -21,7 +24,11 @@ public class Customer {
     private Address address;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
+<<<<<<< HEAD
     @JoinColumn(name="complex_id")
+=======
+    @JoinColumn(name="complex_id", nullable=false)
+>>>>>>> 6c9f13455c7294105efe0ebb677cc0d710da047e
     private Complex complexId;
 
     public Long getId() {
