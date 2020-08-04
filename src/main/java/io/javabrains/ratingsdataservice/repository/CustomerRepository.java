@@ -26,6 +26,9 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
     List<CustomDto> getByQuery();
 
 
+    //Here is develop change
+
+
     //Here is develop
 
     //Here is another change of develope
