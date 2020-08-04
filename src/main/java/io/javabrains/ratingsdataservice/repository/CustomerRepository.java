@@ -28,6 +28,10 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
 
     //Here is develop
 
+    //Here is another change of develope
+
+    //Herre is Master chaanges
+
 //    @Query("select  cus from Customer  cus where cus.carType=:carType")
 //    List<Customer> getNullCustomers(CarType carType);
 
