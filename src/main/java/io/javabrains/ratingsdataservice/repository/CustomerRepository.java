@@ -26,10 +26,10 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
     List<CustomDto> getByQuery();
 
 
-    //Here is develop change
+    //Here is develop changevasdsavas  sacvscass
 
 
-    //Here is develop
+    //Here is develop sdasdas as assdc
 
 //    @Query("select  cus from Customer  cus where cus.carType=:carType")
 //    List<Customer> getNullCustomers(CarType carType);
