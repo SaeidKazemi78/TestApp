@@ -1,6 +1,7 @@
 package io.javabrains.ratingsdataservice.rest;
 
 
+import io.javabrains.ratingsdataservice.dto.CustomDto;
 import io.javabrains.ratingsdataservice.enums.CarType;
 
 import io.javabrains.ratingsdataservice.model.Customer;
@@ -30,7 +31,7 @@ public class CustomerRest {
     }
 
     @RequestMapping("/get-complex")
-    public ResponseEntity<Object> getComplexes(@RequestParam("carType") String carType){
+    public ResponseEntity<List<CustomDto> > getComplexes(){
         return new ResponseEntity<>(customerRepository.getByQuery(), HttpStatus.OK);
     }
 

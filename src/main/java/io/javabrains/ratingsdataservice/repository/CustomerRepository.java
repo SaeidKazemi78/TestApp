@@ -15,20 +15,23 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
     Customer findByName(String alley);
 
 
+//    @Query("select new io.javabrains.ratingsdataservice.dto.CustomDto( customer.name,com.title )" +
+//            "from Customer customer " +
+//            " left join  Complex  com on  customer.complexId = com.id  ")
+//    List<CustomDto> getByQuery();
+
     @Query("select new io.javabrains.ratingsdataservice.dto.CustomDto( customer.name,com.title )" +
             "from Customer customer " +
-            " left join  Complex  com on  customer.complexId = com.id  ")
+            " left join  customer.complexId  com on  customer.complexId = com.id  ")
     List<CustomDto> getByQuery();
+
 
 //    @Query("select  cus from Customer  cus where cus.carType=:carType")
 //    List<Customer> getNullCustomers(CarType carType);
 
     List<Customer> getByCarType(CarType carTypel);
 
-//select custom.name,custom.family from Custom costom inner join Compplex complex
 
-//    @Query("select customer from Customer")
-//    Object getByQuery(String name, CarType carType);
 
 
 

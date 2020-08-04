@@ -92,9 +92,11 @@ public class RatingsDataServiceApplication implements CommandLineRunner {
 			customer.setCarType(CarType.PERSONAL);
 			address.setAlley( " Alley " +i);
 			address.setCity(" CITY " +i);
+
 			if(i/2==0){
 				customer.setComplexId(complex);
 			}
+
 			address.setAlley( " Alley " +i);
 			address.setCity(" CITY " +i);
 			customer.setComplexId(complex);
