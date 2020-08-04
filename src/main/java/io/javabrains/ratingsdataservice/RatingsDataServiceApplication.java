@@ -79,7 +79,7 @@ public class RatingsDataServiceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		System.out.println( " Hello World !");
-		for (int i = 0; i <10 ; i++) {
+		for (int i = 0; i <50 ; i++) {
 
 			Customer customer = new Customer();
 			Address address = new Address();
@@ -88,7 +88,7 @@ public class RatingsDataServiceApplication implements CommandLineRunner {
 			complex.setPrice(new BigInteger(String.valueOf(25000000) +i));
 			complex.setTitle(" Title "+ i);
 			customer.setName( "Name " +i);
-			customer.setZipCode(" Zip " + i);
+			customer.setZipCode(i);
 			customer.setCarType(CarType.PERSONAL);
 			address.setAlley( " Alley " +i);
 			address.setCity(" CITY " +i);

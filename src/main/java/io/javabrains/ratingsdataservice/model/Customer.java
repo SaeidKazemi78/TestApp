@@ -12,9 +12,11 @@ public class Customer {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String zipCode;
+    private Integer zipCode;
 
+    @Enumerated(EnumType.STRING)
     private CarType carType;
+
     private  boolean activated;
 
     @Embedded
@@ -39,11 +41,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getZipCode() {
+
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 

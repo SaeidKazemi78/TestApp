@@ -3,6 +3,7 @@ package io.javabrains.ratingsdataservice.repository;
 import io.javabrains.ratingsdataservice.dto.CustomDto;
 import io.javabrains.ratingsdataservice.enums.CarType;
 import io.javabrains.ratingsdataservice.model.Customer;
+import io.javabrains.ratingsdataservice.projections.CustomerProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -38,7 +39,7 @@ public interface CustomerRepository  extends JpaRepository<Customer,Long> {
 //    @Query("select  cus from Customer  cus where cus.carType=:carType")
 //    List<Customer> getNullCustomers(CarType carType);
 
-    List<Customer> getByCarType(CarType carTypel);
+    List<CustomerProjection> findByCarType(CarType carTypel);
 
 
 

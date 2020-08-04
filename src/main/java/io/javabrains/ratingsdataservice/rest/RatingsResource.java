@@ -19,7 +19,6 @@ public class RatingsResource {
 
     @RequestMapping("/user/{userId}")
     public UserRating getUserRatings(@PathVariable("userId") String userId) {
-
         UserRating userRating = new UserRating();
         userRating.initData(userId);
         return userRating;
