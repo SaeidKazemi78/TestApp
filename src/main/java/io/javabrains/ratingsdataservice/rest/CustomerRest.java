@@ -11,6 +11,8 @@ import io.javabrains.ratingsdataservice.repository.CustomerRepository;
 
 import io.javabrains.ratingsdataservice.repositoryImpl.CustomCustomerRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +43,10 @@ public class CustomerRest {
     }
 
     @RequestMapping("/get-by-car/{car}")
-    public ResponseEntity<List<CustomerProjection>> getNull(@PathVariable("car") String carType){
-        return new ResponseEntity<>(customerRepository.findByCarType(CarType.valueOf(carType)), HttpStatus.OK);
+    public ResponseEntity<List<CustomerProjection>> getNull(@PathVariable("car") String carType,@PathVariable int size,
+                                                            @PathVariable int page,@PathVariable boolean isAsc){
+        return new ResponseEntity<>(customerRepository.findByCarType(CarType.valueOf(carType), PageRequest.of(page,size,
+                isAsc? Sort.by("dasd").ascending():Sort.by("asa").descending() )), HttpStatus.OK);
     }
 
     @RequestMapping("/get-list-by-dsl")
