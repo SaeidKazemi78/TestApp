@@ -2,6 +2,8 @@ package io.javabrains.ratingsdataservice.repositoryImpl;
 
 import com.querydsl.jpa.impl.JPAQuery;
 import io.javabrains.ratingsdataservice.model.Customer;
+//import io.javabrains.ratingsdataservice.model.QComplex;
+//import io.javabrains.ratingsdataservice.model.QCustomer;
 import io.javabrains.ratingsdataservice.model.QComplex;
 import io.javabrains.ratingsdataservice.model.QCustomer;
 import io.javabrains.ratingsdataservice.repository.CustomCustomerRepository;

@@ -8,12 +8,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "tbl_complex")
 public class Complex {
 
-    @Id@GeneratedValue
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
+
+    private String complexNum;
 
     @Lob
     private String address;
@@ -22,7 +25,7 @@ public class Complex {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "complexId",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "complexId")
     private Set<Customer> customers = new HashSet<>();
 
     public Long getId() {

@@ -7,6 +7,9 @@ public class CustomDto {
     }
 
     public CustomDto() {
+
+
+
     }
 
     protected String name;
