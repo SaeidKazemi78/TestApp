@@ -22,8 +22,8 @@ import java.math.BigInteger;
 
 //@Import(LiquibaseConfig.class)
 @SpringBootApplication
-@EnableJpaRepositories
-@EnableAutoConfiguration(exclude = JpaRepositoriesAutoConfiguration.class)
+//@EnableJpaRepositories
+//@EnableAutoConfiguration(exclude = JpaRepositoriesAutoConfiguration.class)
 //@EnableEurekaClient
 public class RatingsDataServiceApplication implements CommandLineRunner {
 
@@ -73,36 +73,38 @@ public class RatingsDataServiceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-//		System.out.println(" URL Connection : " + dataSource.getConnection().isClosed());
+
+		if(!customerRepository.findAll().stream().findAny().isPresent()){
+
+			for (int i = 0; i < 50; i++) {
+
+				Customer customer = new Customer();
+				Address address = new Address();
+				Complex complex = new Complex();
+				complex.setAddress(" Complex Add " + i);
+				complex.setPrice(new BigInteger(String.valueOf(25000000) + i));
+				complex.setTitle(" Title " + i);
+				customer.setName( "Name " +i);
+				customer.setZipCode(i);
+				customer.setCarType(CarType.PERSONAL);
+				address.setAlley( " Alley " +i);
+				address.setCity(" CITY " +i);
+
+				if(i/2==0){
+					customer.setComplexId(complex);
+				}
+
+				address.setAlley( " Alley " +i);
+				address.setCity(" CITY " +i);
+				customer.setComplexId(complex);
+				customer.setAddress(address);
+				customerRepository.save(customer);
+				LOGGER.info( " Saved success !");
+
+			}
+		}
 
 
-		System.out.println(" Hello World !");
-//		for (int i = 0; i < 50; i++) {
-//
-//			Customer customer = new Customer();
-//			Address address = new Address();
-//			Complex complex = new Complex();
-//			complex.setAddress(" Complex Add " + i);
-//			complex.setPrice(new BigInteger(String.valueOf(25000000) + i));
-//			complex.setTitle(" Title " + i);
-//			customer.setName( "Name " +i);
-//			customer.setZipCode(i);
-//			customer.setCarType(CarType.PERSONAL);
-//			address.setAlley( " Alley " +i);
-//			address.setCity(" CITY " +i);
-//
-//			if(i/2==0){
-//				customer.setComplexId(complex);
-//			}
-//
-//			address.setAlley( " Alley " +i);
-//			address.setCity(" CITY " +i);
-//			customer.setComplexId(complex);
-//			customer.setAddress(address);
-//			customerRepository.save(customer);
-//			LOGGER.info( " Saved success !");
-//
-//		}
 
 
 	}
