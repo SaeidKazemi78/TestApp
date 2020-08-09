@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="tbl_customer")
 public class Customer {
 
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +22,9 @@ public class Customer {
 
     @Embedded
     private Address address;
+
+    private String phoneNumber;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="complex_id", nullable=false)
     private Complex complexId;

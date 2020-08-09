@@ -10,6 +10,9 @@ public class Address {
     //Here is develop change
     private String alley;
     private String city;
+    private String zip;
+
+    private String anotherColun;
 
     public String getAlley() {
         return alley;

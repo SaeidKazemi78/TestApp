@@ -4,7 +4,9 @@ import io.javabrains.ratingsdataservice.model.Complex;
 import io.javabrains.ratingsdataservice.projections.ComplexProjection;
 import io.javabrains.ratingsdataservice.repository.ComplexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,10 +47,8 @@ public class ComplexRest {
     }
     @RequestMapping("/id-between/{from}/{to}/{page}/{size}/{isAsc}")
     public ResponseEntity<List<ComplexProjection>> findByIdBetween(@PathVariable Long from,
-                                                                   @PathVariable Long to,
-                                                                   @PathVariable int page,
-                                                                   @PathVariable int size,
-                                                                   @PathVariable boolean isAsc){
+                                                         @PathVariable Long to,
+                                                       int page,int size,boolean isAsc){
         PageRequest pageRequest = new PageRequest(page,size, isAsc?Sort.by("title").ascending():Sort.by("title").descending());
         return new ResponseEntity<>(complexRepository.findByIdBetween(from,to, pageRequest), HttpStatus.OK);
     }

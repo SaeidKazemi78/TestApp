@@ -23,5 +23,5 @@ public interface ComplexRepository  extends JpaRepository<Complex,Long>, PagingA
     List<Complex> findByTitleLike(String title);
 
 
-    List<ComplexProjection> findByIdBetween(Long from, Long to, Pageable pageable);
+    List<ComplexProjection> findByIdBetween(Long from, Long to,Pageable pageable);
 }
