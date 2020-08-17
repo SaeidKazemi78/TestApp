@@ -1,1 +1,51 @@
-@DynamicUpdate
+//@DynamicUpdate
+ //@PostConstruct
+ //@EnableMetrics(proxyTargetClass = true)
+
+ //.sessionManagement()
+ //              // .sessionCreationPolicy
+
+                //system pass :niopdc@ABMJJ1399
+
+              //  PredicatesBuilder() in query dsl
+              //SpringTemplateEngine
+
+//                      message.setStartDate(ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+    @Transactional(readOnly = true)
+    public Optional<UserDTO> getUserWithAuthorities() {
+
+        Optional<String> login = SecurityUtils.getCurrentUserLogin();
+        log.info("user name in access:" + login);
+        System.out.println(" *****************  Login   : " +login);
+        if(login!=null){
+            return login.flatMap(userRepository::findOneWithRolesByLogin).map(user -> {
+                UserDTO userDTO = userMapper.userToUserDTO(user);
+                if(authorityService==null){
+                    System.out.println(" ************** Authorities Service is null ");
+                }
+                userDTO.setAuthorities(authorityService.loadAllAuthoritiesByUser(user)
+                    .stream().map(Authority::getName).collect(Collectors.toSet()));
+
+
+                System.out.println(" **************  authorities loaded !!!!");
+                try {
+                    if (user.getUserType() == UserType.PERSON) {
+                        PersonDTO person = baseServiceClient.findPersonIdByUsername(login.get());
+                        System.out.printf("************ findPerson has been passed");
+                        if (person != null) {
+                            userDTO.setPerson(person);
+                            // userDTO.setWalletAmount(paymentServiceClient.findWallet(person.getId()));
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(" **************** Catch : " +e.getMessage());
+                    e.printStackTrace();
+                }
+                return userDTO;
+            });
+        }else {
+            return Optional.of(null);
+        }
+
+    }
